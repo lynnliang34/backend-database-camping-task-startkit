@@ -14,14 +14,32 @@
 --     4. 用戶名稱為`好野人`，Email 為`richman@hexschooltest.io`，Role為`USER`
 --     5. 用戶名稱為`Q太郎`，Email 為`starplatinum@hexschooltest.io`，Role為`USER`
 --     6. 用戶名稱為 透明人，Email 為 opacity0@hexschooltest.io，Role 為 USER
+INSERT INTO "USER" (name, email, role) -- 新增資料到 USER 資料表，指定欄位 name, email, role
+VALUES -- 要新增資料的對應值
+    ('李燕容', 'lee2000@hexschooltest.io', 'USER'),
+    ('王小明', 'wXlTq@hexschooltest.io', 'USER'),
+    ('肌肉棒子', 'muscle@hexschooltest.io', 'USER'),
+    ('好野人', 'richman@hexschooltest.io', 'USER'),
+    ('Q太郎', 'starplatinum@hexschooltest.io', 'USER'),
+    ('透明人', 'opacity0@hexschooltest.io', 'USER');
 
 -- 1-2 修改：用 Email 找到 李燕容、肌肉棒子、Q太郎，如果他的 Role 為 USER 將他的 Role 改為 COACH
+UPDATE "USER" -- 更新 USER 資料表
+SET role = 'COACH' -- 將 role 欄位的值改為 COACH
+WHERE email IN ('lee2000@hexschooltest.io', 'muscle@hexschooltest.io', 'starplatinum@hexschooltest.io') -- 篩選出指定 Email 的用戶
+  AND role = 'USER'; -- 只更新 Role 原為 USER 的記錄
 
 -- 1-3 刪除：刪除USER 資料表中，用 Email 找到透明人，並刪除該筆資料
+DELETE FROM "USER" -- 刪除 USER 資料表中的資料
+WHERE email = 'opacity0@hexschooltest.io'; -- 刪除的資料條件
 
 -- 1-4 查詢：取得USER 資料表目前所有用戶數量（提示：使用count函式）
+SELECT COUNT(*) AS "目前所有用戶數量" -- 計算資料表的總筆數，給結果欄位取名為"目前所有用戶數量"
+FROM "USER"; -- 查詢 USER 資料表
 
 -- 1-5 查詢：取得 USER 資料表所有用戶資料，並列出前 3 筆（提示：使用limit語法）
+SELECT * FROM "USER" -- 選取 USER 資料表的所有欄位
+LIMIT 3; -- 限制只返回前 3 筆記錄
 
 
 --  ████████  █████   █    ████  
